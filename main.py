@@ -61,12 +61,13 @@ DISTANCE_ABOVE = 500
 DISTANCE_ABOVE_DECREMENT = 500
 DISTANCE_BELOW_DECREMENT = 50
 
-
 CURRENT_PATH = os.getcwd()
 
 DELETE_MP3 = True
 
 AUDIO_VOLUME = 2.5
+
+FOLDER_PATH = 'voices'
 
 def generate_tts(wav_file, mp3_file, speech, locale):
   if os.path.exists(wav_file):
@@ -146,6 +147,12 @@ def build_distance():
     pass
 
 def main():
+  if not os.path.exists(FOLDER_PATH):
+    os.makedirs(FOLDER_PATH)
+    print(f"Folder '{FOLDER_PATH}' created successfully.")
+  else:
+    print(f"Folder '{FOLDER_PATH}' already exists.")
+
   build_distance()
   build_direction()
   pass
